@@ -4,6 +4,9 @@
 #define mod 1000000007
 using namespace std;
 un ll arr[100000] = {0};
+//memoization technique
+//complexity reduced to O(n)
+//space complexity 0(n), time complexity 0(n)
 un ll fib(un ll n)
 {
 
