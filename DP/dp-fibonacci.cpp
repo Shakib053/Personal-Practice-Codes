@@ -9,7 +9,8 @@ un ll arr[100000] = {0};
 //space complexity 0(n), time complexity 0(n)
 un ll fib(un ll n)
 {
-
+    if (n == 0)
+        return 0;
     if (n <= 2)
         return 1;
     if (arr[n] != 0)
@@ -24,8 +25,9 @@ int main()
 {
     un ll t;
     cin >> t;
-    arr[0] = 1;
+    arr[0] = 0;
     arr[1] = 1;
+    // arr[2] = 1;
     while (t--)
     {
         un ll n;
