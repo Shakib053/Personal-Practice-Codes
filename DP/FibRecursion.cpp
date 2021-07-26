@@ -3,6 +3,7 @@
 #define un unsigned
 #define mod 1000000007
 using namespace std;
+//space complexity 0(n), time complexity 0(2^n)
 ll fib(ll n)
 {
 

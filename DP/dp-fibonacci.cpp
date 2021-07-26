@@ -5,7 +5,7 @@
 using namespace std;
 un ll arr[100000] = {0};
 //memoization technique
-//complexity reduced to O(n)
+//complexity reduced to O(n) from 0(2^n)
 //space complexity 0(n), time complexity 0(n)
 un ll fib(un ll n)
 {
