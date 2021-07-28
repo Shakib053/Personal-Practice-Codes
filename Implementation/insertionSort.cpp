@@ -1,29 +1,30 @@
 #include<bits/stdc++.h>
-#include<iterator>
-#include<set>
 #define ll long long
 using namespace std;
 int main()
 {   
- int t;
- cin>>t;
- while (t--)
+ int n;
+ cin>>n;
+ int a[n];
+ for(int i=0;i<n;i++)
  {
-     int n;
-     cin>>n;
-     int r;
-     if(n/10000>=1)
-     {
-         n=n-(n%10000);
-     }
-     if(n/1000>=1)
-     n=n-(n%1000);
-     if(n/100>=1)
-     n=n-(n%100);
-     if(n/10>=1)
-     n=n-(n%10);
- 
+     cin>>a[i];
  }
- 
+ for(int i=1;i<n;i++)
+ {
+     int v=a[i];
+     int h=i;
+     while(h>0 && a[h-1]>v)
+     {
+         a[h]=a[h-1];
+         h--;
+     }
+     a[h]=v;
+ }
+  for(int i=0;i<n;i++)
+  {
+      cout<<a[i]<<" ";
+  }
+  cout<<endl;
  return 0;
 }
