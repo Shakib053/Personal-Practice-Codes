@@ -9,8 +9,11 @@ int binary_search(int a[], int l, int r, int x)
     while (l <= r)
     {
         int mid = (l + r) / 2;
+        // int mid = l + (r - l) / 2;
+        // int mid = r - (r - l) / 2;
         if (a[mid] == x)
             return mid + 1;
+        // 1 base indexing is value is returned
         if (x > a[mid])
             l = mid + 1;
         else
@@ -24,7 +27,7 @@ int main()
     int n;
     cin >> n;
     int a[n];
-    // sortered array should be given
+    // sorted array should be given
     for (int i = 0; i < n; i++)
         cin >> a[i];
     int x;
