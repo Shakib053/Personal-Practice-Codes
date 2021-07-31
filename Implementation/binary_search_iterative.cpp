@@ -8,8 +8,8 @@ int binary_search(int a[], int l, int r, int x)
 {
     while (l <= r)
     {
-        int mid = (l + r) / 2;
-        // int mid = l + (r - l) / 2;
+        // int mid = (l + r) / 2; overflow can happen
+        int mid = l + (r - l) / 2;
         // int mid = r - (r - l) / 2;
         if (a[mid] == x)
             return mid + 1;
