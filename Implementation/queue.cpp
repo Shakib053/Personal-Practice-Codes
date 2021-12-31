@@ -37,7 +37,10 @@ int main()
         enqueue(x);
     }
     displayQueue();
-    cout << dequeue() << endl;
+    if (dequeue() == 0)
+        cout << "Queue is empty\n";
+    else
+        cout << dequeue() << endl;
     displayQueue();
     return 0;
 }
