@@ -1,58 +1,63 @@
-// Linked list insertion and print
+/*
+LeetCode 1290
+--- Convert Binary Number in a Linked List to Integer ---
+*/
 
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 #include <bits/stdc++.h>
 using namespace std;
-
-struct node
+struct ListNode
 {
-    int roll;
-    node *next;
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
+class Solution
+{
+public:
+    int binaryToDecimal(string n)
+    {
+        string num = n;
+        int dec_value = 0;
 
-// create a root node which will always hold the address of first node
-node *root = NULL;
-void insert(int val)
-{
-    if (root == NULL)
-    {
-        root = new node();
-        root->roll = val;
-        root->next = NULL;
-    }
-    else
-    {
-        node *currentNode = root;         // make a copy of root node
-        while (currentNode->next != NULL) // Find the last node
+        // Initializing base value to 1, i.e 2^0
+        int base = 1;
+
+        int len = num.length();
+        for (int i = len - 1; i >= 0; i--)
         {
-            currentNode = currentNode->next; // go to next address
+            if (num[i] == '1')
+                dec_value += base;
+            base = base * 2;
         }
-        node *newNode = new node(); // create a new node
-        newNode->roll = val;
-        newNode->next = NULL;
-        currentNode->next = newNode;
+
+        return dec_value;
     }
-}
-void print()
-{
-    cout << "numbers in the linked list are: ";
-    node *currentNode = root;
-    while (currentNode != NULL) //
+
+    int getDecimalValue(ListNode *head)
     {
-        cout << currentNode->roll << " ";
-        currentNode = currentNode->next;
+
+        vector<string> v;
+        string ans = "";
+
+        ListNode *currentNode = head;
+        while (currentNode != NULL)
+        {
+            ans = ans + to_string(currentNode->val);
+            currentNode = currentNode->next;
+        }
+        int result = binaryToDecimal(ans);
+        return result;
     }
-    cout << endl;
-}
-int main()
-{
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        insert(x);
-    }
-    print();
-    return 0;
-}
+};
