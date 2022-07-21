@@ -44,20 +44,22 @@ void deleteNode(int value)
 {
     node *currentNode = root;
     node *previousNode = NULL;
-    while (currentNode->val != value)
+    while (currentNode->val != value) // searching node
     {
-        previousNode = currentNode;
+        previousNode = currentNode; // saving previous node to use it after deletion
         currentNode = currentNode->next;
     }
-    if (currentNode == root)
+    if (currentNode == root) // delete root node
     {
-        node *temp = root;
-        root = root->next;
-        delete (temp);
+        node *temp = root; // save root in temporary variable
+        root = root->next; // move root forward
+        delete (temp);     // free memory
     }
-    else
+    else // delete non-root node
     {
+        // previous node points the current node's next node
         previousNode->next = currentNode->next;
+        // free current node
         delete (currentNode);
     }
 }
