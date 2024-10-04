@@ -30,34 +30,34 @@ void buildTrie(string word) {
     curr->isEnd = true;
 }
 
-bool isWordExistInTrie(string word){
+bool checkIfAllPrefixExists(string word){
     TrieNode* curr = root;
     for(auto ch: word){
         if(!curr->child[ch-'a']){
            return false;
         }
+
         curr = curr->child[ch-'a'];
+        if(curr->isEnd == false) return false;
     }  
     return curr->isEnd;
 }
 
 string completeString(int n, vector<string> &a){
     root = new TrieNode();
+    
     for(auto it:a){
         buildTrie(it);
     }
     string ans = "";
+
     for(auto it: a){
-        string check;
+        string check = it;
         int f = 0;
 
-        for(int i=0;i<it.size();i++){
-          check.push_back(it[i]);
-          if(!isWordExistInTrie(check)){ 
+        if(!checkIfAllPrefixExists(check)){ 
               f = 1;
-              break;
-          } 
-        }
+        } 
 
         if(f == 1) continue;
         
